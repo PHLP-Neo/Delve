@@ -1,0 +1,21 @@
+import dungeon
+import renderer
+import os
+import time
+
+
+def generate_dungeon(dungeon_width = 52, dungeon_height = 28, dungeon_type = 0):
+    new_dungeon = dungeon.Dungeon(dungeon_width,dungeon_height,dungeon_type)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("Creating Walls...")
+    renderer.render_map(new_dungeon)
+    time.sleep(1)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    new_dungeon.add_rooms()
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print('Room Created')
+    renderer.render_map(new_dungeon)
+    time.sleep(5)
+
+if __name__ == "__main__":
+    generate_dungeon(100,30,1)
