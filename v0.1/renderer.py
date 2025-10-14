@@ -1,8 +1,9 @@
 import dungeon
+import floor
 
-def render_map(dungeon):
-    dungeon_map = dungeon.return_map()
-    for i in dungeon.__str__():
+def render_map(floor):
+    floor_map = floor.return_map()
+    for i in floor.__str__():
         #return
         match i:
             case "%":
