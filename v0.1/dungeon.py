@@ -1,8 +1,10 @@
 import room
 import mode
 import corridor
-import time
+import random
 import maze_generator
+import os
+import floor
 
 class Dungeon:
     def __init__(self,floor, dungeon_type = 0):
@@ -10,13 +12,10 @@ class Dungeon:
         self.width = self.floor.get_width()
         self.height = self.floor.get_height()
         self.type = dungeon_type
-        # print("selftype is",self.type)
         self.layout = floor.get_floormap()
         self.current_mode = mode.layoutdict[self.type]
         self.rooms = {}
         self.corridors = []
-        # print("selfmode is",self.current_mode)
-        #time.sleep(1)
 
     def add_rooms(self,floordepth = 0):
         '''
@@ -70,3 +69,25 @@ class Dungeon:
             result += ''.join(i) + '\n'
         return result
     
+    def get_floor(self):
+        return self.floor
+    
+    def get_spawn_point(self):
+        rooms = list(self.rooms.values())
+        while(True):
+            spawn_room = random.choice(rooms)
+            if spawn_room.get_x_min() != spawn_room.get_x_max():
+                break
+        spawn_pos_x = random.randrange(spawn_room.get_x_min(),spawn_room.get_x_max()+1)
+        spawn_pos_y = random.randrange(spawn_room.get_y_min(),spawn_room.get_y_max()+1)
+        return [spawn_pos_y,spawn_pos_x]
+
+def generate_dungeon(dungeon_width = 60, dungeon_height = 34, dungeon_type = 1):
+    new_floor = floor.Floor(dungeon_width,dungeon_height)
+    new_dungeon = Dungeon(new_floor,dungeon_type)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    new_dungeon.add_rooms()
+    os.system('cls' if os.name == 'nt' else 'clear')
+    new_dungeon.add_main_corridors()
+    os.system('cls' if os.name == 'nt' else 'clear')
+    return new_dungeon

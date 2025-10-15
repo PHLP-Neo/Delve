@@ -1,29 +1,23 @@
 import dungeon
 import renderer
+import entity
+import player
 import os
-import time
-import floor
 
-def generate_dungeon(dungeon_width = 60, dungeon_height = 34, dungeon_type = 1):
-    # os.system('cls' if os.name == 'nt' else 'clear')
-    new_floor = floor.Floor(dungeon_width,dungeon_height)
-    new_dungeon = dungeon.Dungeon(new_floor,dungeon_type)
-    # os.system('cls' if os.name == 'nt' else 'clear')
-    # print("Creating Walls...")
-    # renderer.render_map(new_floor)
-    # time.sleep(1)
-    # os.system('cls' if os.name == 'nt' else 'clear')
-    new_dungeon.add_rooms()
-    # os.system('cls' if os.name == 'nt' else 'clear')
-    # print('Room Created')
-    # renderer.render_map(new_floor)
-    # time.sleep(2)
-    # os.system('cls' if os.name == 'nt' else 'clear')
-    new_dungeon.add_main_corridors()
-    # os.system('cls' if os.name == 'nt' else 'clear')
-    # print('Corridor Created')
-    renderer.render_map(new_floor)
-    # time.sleep(2)
+def play_cycle(new_dungeon,player1):
+    while True:
+        stop = player.player_movement(player1,new_dungeon.get_floor().get_floormap())
+        #renderer.render_stacked(new_dungeon,player1)
+        renderer.render_stacked_fog(new_dungeon,player1)
+        if stop:
+            os.system('cls' if os.name == 'nt' else 'clear')
+            break
 
 if __name__ == "__main__":
-    generate_dungeon(150,45,2)
+    new_dungeon = dungeon.generate_dungeon(130,50,2)
+    #renderer.render_stacked(new_dungeon.get_floor())
+    player1_pos = new_dungeon.get_spawn_point()
+    player1 = entity.Player(player1_pos[0],player1_pos[1])
+    print("\033[H",end="")
+    renderer.render_stacked_fog(new_dungeon,player1)
+    play_cycle(new_dungeon,player1)

@@ -64,3 +64,8 @@ class Floor:
         for i in self.floormap:
             result += ''.join(i) + '\n'
         return result
+    
+
+if __name__ == "__main__":
+    new_floor = Floor()
+    print(new_floor.floormap)
