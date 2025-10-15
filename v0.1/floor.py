@@ -29,9 +29,9 @@ class Floor:
             for j in range(x_min,x_max+1):
                 if i in range(room_y_min,room_y_max+1) and j in range(room_x_min,room_x_max+1):
                     self.floormap[i][j] = '.'
-                    print('Creating Rooms...')
-                    renderer.render_map(self)
-                    time.sleep(0.01)
+                    # print('Creating Rooms...')
+                    # renderer.render_map(self)
+                    # time.sleep(0.01)
                 pass
         pass
 
@@ -40,9 +40,9 @@ class Floor:
             x_cood = corridor_cood[1]
             y_cood = corridor_cood[0]
             self.floormap[y_cood][x_cood] = '+'
-            print('Creating Corridors...')
-            renderer.render_map(self)
-            time.sleep(0.01)
+            # print('Creating Corridors...')
+            # renderer.render_map(self)
+            # time.sleep(0.01)
 
     def get_width(self):
         return self.width
