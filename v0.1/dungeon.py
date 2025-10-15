@@ -1,10 +1,10 @@
 import room
 import mode
-import random
-import renderer
+#import random
+#import renderer
 import os
 import time
-import floor
+#import floor
 
 class Dungeon:
     def __init__(self,floor, dungeon_type = 0):
@@ -12,8 +12,11 @@ class Dungeon:
         self.width = self.floor.get_width()
         self.height = self.floor.get_height()
         self.type = dungeon_type
+        print("selftype is",self.type)
         self.layout = floor.get_floormap()
         self.current_mode = mode.layoutdict[self.type]
+        print("selfmode is",self.current_mode)
+        #time.sleep(1)
 
     def add_rooms(self,floordepth = 0):
         '''
@@ -43,7 +46,6 @@ class Dungeon:
                 # print("y max is:",bottom_y)
                 new_room = room.Room(bounding_box,self.type,i,j)
                 self.floor.add_new_room(bounding_box,new_room)
-                
         pass
 
     def __str__(self):
