@@ -13,7 +13,7 @@ def render_map(floor):
             case '.':
                 print("\x1b[38;5;40m░\x1b[0m",end="")
             case '+':
-                print("\x1b[38;5;226m░\x1b[0m",end="")
+                print("\x1b[38;5;226m▓\x1b[0m",end="")
             case _:
                 print(i,end="")
     print("\033[H",end="")

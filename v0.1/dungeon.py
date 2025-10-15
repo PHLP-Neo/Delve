@@ -50,7 +50,7 @@ class Dungeon:
         pass
 
     def add_main_corridors(self):
-        corridor_list = maze_generator.create_maze(self.current_mode['segments_y'],self.current_mode['segments_x'])
+        corridor_list = maze_generator.create_maze(self.current_mode['segments_y'],self.current_mode['segments_x'],self.current_mode['duplicated chance'])
         for corridor_connection in corridor_list:
             room1 = self.rooms[tuple(corridor_connection[0])]
             room2 = self.rooms[tuple(corridor_connection[1])]

@@ -26,4 +26,4 @@ def generate_dungeon(dungeon_width = 60, dungeon_height = 34, dungeon_type = 1):
     time.sleep(2)
 
 if __name__ == "__main__":
-    generate_dungeon(100,30,1)
+    generate_dungeon(150,45,2)

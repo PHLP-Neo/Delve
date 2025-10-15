@@ -54,6 +54,35 @@ def create_maze(height:int,width:int,duplicated_corridor:float = 0):
         # print('current tree nodes:',tree)
         # print('current frontier is',frontier)
     # 
+
+    duplicated_amount = round(duplicated_corridor*len(edge_list))
+    while duplicated_amount > 0:
+        node_lottery = random.choice(tree)
+        node_lottery_y = node_lottery[0]
+        node_lottery_x = node_lottery[1]   
+        neightbors = []
+        if node_lottery_y > 0:
+            neightbors.append([node_lottery_y-1,node_lottery_x])
+        if node_lottery_y < height-1:
+            neightbors.append([node_lottery_y+1,node_lottery_x])
+        if node_lottery_x > 0:
+            neightbors.append([node_lottery_y,node_lottery_x-1])
+        if node_lottery_x < width-1:
+            neightbors.append([node_lottery_y,node_lottery_x+1])
+
+        valid_neighbors = []
+        for neighbor in neightbors:
+            if [neighbor,node_lottery] not in edge_list and [node_lottery,neighbor] not in edge_list:
+                valid_neighbors.append(neighbor)
+
+        if valid_neighbors == []:
+            continue
+
+        else:
+            edge_list.append([node_lottery,random.choice(valid_neighbors)])
+            duplicated_amount -= 1
+        
+
     return edge_list
 
 def connect_north(tree,frontier,node_to_develop_edge,new_treenode_y,new_treenode_x,width,height):
