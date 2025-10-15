@@ -1,6 +1,6 @@
 import random
 
-def create_maze(height:int,width:int,duplicated_corridor:float):
+def create_maze(height:int,width:int,duplicated_corridor:float = 0):
     tree = []
     frontier = []
     max_node = height*width
@@ -53,6 +53,7 @@ def create_maze(height:int,width:int,duplicated_corridor:float):
         # print("after iteration:")
         # print('current tree nodes:',tree)
         # print('current frontier is',frontier)
+    # 
     return edge_list
 
 def connect_north(tree,frontier,node_to_develop_edge,new_treenode_y,new_treenode_x,width,height):
@@ -114,3 +115,4 @@ if __name__ == "__main__":
     edge_list2 = create_maze(8,25,0.1)
     print("maze for size (8,25)")
     visualize_edge_list(8,25,edge_list2)
+    print(edge_list2)

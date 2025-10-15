@@ -17,7 +17,13 @@ def generate_dungeon(dungeon_width = 60, dungeon_height = 34, dungeon_type = 1):
     os.system('cls' if os.name == 'nt' else 'clear')
     print('Room Created')
     renderer.render_map(new_floor)
-    time.sleep(5)
+    time.sleep(2)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    new_dungeon.add_main_corridors()
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print('Corridor Created')
+    renderer.render_map(new_floor)
+    time.sleep(2)
 
 if __name__ == "__main__":
-    generate_dungeon(65,45,2)
+    generate_dungeon(100,30,1)

@@ -9,7 +9,7 @@ class Room:
         x_max = bounding_box[1]
         y_min = bounding_box[2]
         y_max = bounding_box[3]
-        #coordinate = [index_i,index_j]
+        self.coordinate = [index_i,index_j]
         if random.random() < chance_for_empty_room[index_i][index_j]:
             #just generate a single dot, aka fake room
             self.x_min = random.randint(x_min+2,x_max-2)
@@ -49,8 +49,8 @@ class Room:
     def get_y_max(self):
         return self.y_max
     
-    #def get_y_coordinate(self):
-    #    return self.coordinate[0]
+    def get_y_coordinate(self):
+        return self.coordinate[0]
     
-    #def get_x_coordinate(self):
-    #    return self.coordinate[1]
+    def get_x_coordinate(self):
+        return self.coordinate[1]

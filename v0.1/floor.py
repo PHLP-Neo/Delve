@@ -16,8 +16,6 @@ class Floor:
                     row.append('#')
             self.floormap.append(row)
 
-
-
     def add_new_room(self,bounding_box, target_room):
         x_min = bounding_box[0]
         x_max = bounding_box[1]
@@ -36,6 +34,15 @@ class Floor:
                     time.sleep(0.01)
                 pass
         pass
+
+    def add_new_corridor(self,corridorlist):
+        for corridor_cood in corridorlist.get_list():
+            x_cood = corridor_cood[1]
+            y_cood = corridor_cood[0]
+            self.floormap[y_cood][x_cood] = '+'
+            print('Creating Corridors...')
+            renderer.render_map(self)
+            time.sleep(0.01)
 
     def get_width(self):
         return self.width
