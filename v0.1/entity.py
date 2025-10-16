@@ -1,5 +1,3 @@
-import floor
-
 class Entity:
     def __init__(self,y_axis,x_axis):
         self.x = x_axis

@@ -1,6 +1,3 @@
-import renderer
-import time
-
 class Floor:
     def __init__(self,dungeon_width = 52, dungeon_height = 28, dungeon_type = 0):
         self.width = dungeon_width
